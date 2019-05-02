@@ -4,12 +4,17 @@ import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 
-public class TestJob implements Job{
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+public class TestJob extends BaseJob{
 
 	@Override
-	public void execute(JobExecutionContext context) throws JobExecutionException {
-		// TODO Auto-generated method stub
-		System.out.println("--------------------------job수행---------------------------");
+	protected void doExecute(JobExecutionContext context) {
+
+
+		System.out.println("--------------------------job doExecute 수행---------------------------");
+		log.info("### {} is being executed!",  context.getJobDetail().getJobDataMap().get("JobName").toString());
 	}
 
 }
